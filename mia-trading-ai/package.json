@@ -1,0 +1,26 @@
+{
+  "name": "aicy-trading-ai",
+  "version": "2.5.0",
+  "description": "Aicy - 来自2157年的赛博少女 | Your Cyber Girlfriend from 2157",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "reset": "node -e \"require('./api/user').handleReset(null, {writeHead:()=>{},end:console.log})\""
+  },
+  "keywords": [
+    "ai-girlfriend",
+    "trading",
+    "ai",
+    "cryptocurrency",
+    "deepseek",
+    "visual-novel"
+  ],
+  "author": "KY-East",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
+
+

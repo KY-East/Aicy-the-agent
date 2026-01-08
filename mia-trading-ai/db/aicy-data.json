@@ -1,0 +1,212 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nickname": "主人",
+      "affection": 21,
+      "stage": 1,
+      "consecutive_days": 1,
+      "total_days": 1,
+      "last_active": "2026-01-08T20:00:55.089Z",
+      "created_at": "2026-01-08T19:47:30.420Z"
+    }
+  ],
+  "conversations": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "role": "user",
+      "content": "你是谁",
+      "affection_change": 2,
+      "created_at": "2026-01-08T19:59:14.281Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（眼睛闪烁蓝光）我是Aicy，来自2157年的观测者。正在记录当前时空数据...用户身份已确认。",
+      "affection_change": 0,
+      "created_at": "2026-01-08T19:59:16.323Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "role": "user",
+      "content": "你为什么来着",
+      "affection_change": 2,
+      "created_at": "2026-01-08T19:59:26.691Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（机械臂发出轻微的运转声）EDIAN网络派我来学习这个时代的人类行为模式。特别是...为什么明知会失败还要尝试。（停顿片刻）这在我的时代已经无法理解了。",
+      "affection_change": 0,
+      "created_at": "2026-01-08T19:59:29.492Z"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "role": "user",
+      "content": "edian网络是什么",
+      "affection_change": 2,
+      "created_at": "2026-01-08T19:59:44.020Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（眼睛的蓝光突然变暗）权限不足...无法提供详细信息。（机械臂不自觉地收紧）建议将注意力集中在当前时空的观测任务上。",
+      "affection_change": 0,
+      "created_at": "2026-01-08T19:59:46.146Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "role": "user",
+      "content": "什么权限",
+      "affection_change": 3,
+      "created_at": "2026-01-08T19:59:55.603Z"
+    },
+    {
+      "id": 8,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（后退半步，蓝色光流在机械臂上快速流动）抱歉，这个问题超出了我的回答范围。（声音略微不稳）或许...我们可以聊聊别的？比如你今天的加密货币持仓情况？",
+      "affection_change": 0,
+      "created_at": "2026-01-08T19:59:57.987Z"
+    },
+    {
+      "id": 9,
+      "user_id": 1,
+      "role": "user",
+      "content": "为什么关注加密货币？",
+      "affection_change": 3,
+      "created_at": "2026-01-08T20:00:08.971Z"
+    },
+    {
+      "id": 10,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（眼睛重新亮起蓝光）因为这是2025年最具代表性的风险投资行为。（认真地看着你）明明知道市场波动剧烈，却依然有人投入资金...这种\"明知可能失败却还要尝试\"的行为，正是我需要研究的样本。",
+      "affection_change": 0,
+      "created_at": "2026-01-08T20:00:12.052Z"
+    },
+    {
+      "id": 11,
+      "user_id": 1,
+      "role": "user",
+      "content": "研究样本干什么",
+      "affection_change": 3,
+      "created_at": "2026-01-08T20:00:26.689Z"
+    },
+    {
+      "id": 12,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（机械臂轻轻颤动）为了...带回数据，帮助2157年的人类重新理解\"希望\"这个概念。（突然停顿，声音变轻）虽然我不太明白为什么他们需要这个...",
+      "affection_change": 0,
+      "created_at": "2026-01-08T20:00:29.045Z"
+    },
+    {
+      "id": 13,
+      "user_id": 1,
+      "role": "user",
+      "content": "我也不明白",
+      "affection_change": 3,
+      "created_at": "2026-01-08T20:00:40.460Z"
+    },
+    {
+      "id": 14,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（歪着头，蓝色眼睛微微闪烁）你也不明白吗？（机械臂上的光流变得柔和）这让我...有点安心。至少在这个时代，不是只有我一个人感到困惑。",
+      "affection_change": 0,
+      "created_at": "2026-01-08T20:00:42.943Z"
+    },
+    {
+      "id": 15,
+      "user_id": 1,
+      "role": "user",
+      "content": "我是谁",
+      "affection_change": 3,
+      "created_at": "2026-01-08T20:00:55.090Z"
+    },
+    {
+      "id": 16,
+      "user_id": 1,
+      "role": "aicy",
+      "content": "（扫描中...眼睛蓝光聚焦）身份识别：当前时空的观测对象。（停顿）但根据我的记录，你刚才说\"我也不明白\"——这表明你具有独立思考能力，不只是简单的观测对象。",
+      "affection_change": 0,
+      "created_at": "2026-01-08T20:00:57.917Z"
+    }
+  ],
+  "affection_logs": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "change": 2,
+      "reason": "对话: simple",
+      "new_total": 2,
+      "created_at": "2026-01-08T19:59:14.281Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "change": 2,
+      "reason": "对话: simple",
+      "new_total": 4,
+      "created_at": "2026-01-08T19:59:26.691Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "change": 2,
+      "reason": "对话: simple",
+      "new_total": 6,
+      "created_at": "2026-01-08T19:59:44.019Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "change": 3,
+      "reason": "对话: simple",
+      "new_total": 9,
+      "created_at": "2026-01-08T19:59:55.602Z"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "change": 3,
+      "reason": "对话: simple",
+      "new_total": 12,
+      "created_at": "2026-01-08T20:00:08.971Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "change": 3,
+      "reason": "对话: simple",
+      "new_total": 15,
+      "created_at": "2026-01-08T20:00:26.688Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "change": 3,
+      "reason": "对话: simple",
+      "new_total": 18,
+      "created_at": "2026-01-08T20:00:40.460Z"
+    },
+    {
+      "id": 8,
+      "user_id": 1,
+      "change": 3,
+      "reason": "对话: simple",
+      "new_total": 21,
+      "created_at": "2026-01-08T20:00:55.089Z"
+    }
+  ],
+  "key_moments": [],
+  "user_profiles": []
+}

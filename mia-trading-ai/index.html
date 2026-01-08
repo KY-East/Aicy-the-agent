@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aicy - 你的银发女友</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+    <!-- Scanline Effect -->
+    <div class="scanline"></div>
+    
+    <!-- Main Layout -->
+    <div class="app-container">
+        <!-- Left: Main Content -->
+        <main class="main-panel">
+        <!-- Header -->
+        <header class="header">
+                <div class="header-left">
+            <div class="logo">
+                        <span class="logo-text">AICY</span>
+                        <span class="logo-sub" data-i18n="trading_ai">YOUR GIRLFRIEND</span>
+            </div>
+                    <div class="coin-selector">
+                        <button class="coin-btn active" data-coin="BTC">BTC</button>
+                        <button class="coin-btn" data-coin="ETH">ETH</button>
+                        <button class="coin-btn" data-coin="SOL">SOL</button>
+            </div>
+                </div>
+                <div class="header-right">
+                    <!-- 语言切换 -->
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="zh">中</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+                    <span class="status-indicator online"></span>
+                    <span class="last-update" id="lastUpdate">--:--:--</span>
+                    <button class="icon-btn" id="refreshBtn" data-i18n-title="refresh">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Price Bar -->
+            <div class="price-bar">
+                    <div class="price-main">
+                        <span class="price-value" id="currentPrice">--</span>
+                        <span class="price-change" id="priceChange">--</span>
+                    </div>
+                <div class="price-stats">
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="funding_rate">资金费率</span>
+                        <span class="stat-value" id="fundingRate">--</span>
+                        </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="open_interest">持仓量</span>
+                        <span class="stat-value" id="openInterest">--</span>
+                        </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="long_short_ratio">多空比</span>
+                        <span class="stat-value" id="longShortRatio">--</span>
+                        </div>
+                    <div class="stat-item">
+                        <span class="stat-label" data-i18n="top_trader_ratio">大户比</span>
+                        <span class="stat-value" id="topTraderRatio">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-container">
+                <div id="tradingview-widget">
+                    <div class="tradingview-widget-container" style="height:100%;width:100%">
+                        <div id="tradingview_chart" style="height:100%;width:100%"></div>
+                    </div>
+                </div>
+                        </div>
+
+            <!-- Data Grid - 扩展数据 -->
+            <div class="data-grid">
+                <!-- RSI -->
+                <div class="data-block">
+                    <div class="block-header">
+                        <span class="block-title" data-i18n="rsi">RSI</span>
+                        <span class="block-source" data-i18n="source">Coinglass</span>
+                        </div>
+                    <div class="rsi-grid">
+                        <div class="rsi-item">
+                            <span class="rsi-period">15M</span>
+                            <span class="rsi-value" id="rsi15m">--</span>
+                        </div>
+                        <div class="rsi-item">
+                            <span class="rsi-period">1H</span>
+                            <span class="rsi-value" id="rsi1h">--</span>
+                        </div>
+                        <div class="rsi-item">
+                            <span class="rsi-period">4H</span>
+                            <span class="rsi-value" id="rsi4h">--</span>
+                        </div>
+                        <div class="rsi-item">
+                            <span class="rsi-period">1D</span>
+                            <span class="rsi-value" id="rsi1d">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 主动买卖比 -->
+                <div class="data-block">
+                    <div class="block-header">
+                        <span class="block-title" data-i18n="buy_sell_ratio">买卖比</span>
+                        <span class="block-source" data-i18n="source">Coinglass</span>
+                </div>
+                    <div class="taker-content">
+                        <div class="taker-ratio" id="takerRatio">--</div>
+                        <div class="taker-bar">
+                            <div class="taker-buy" id="takerBuyBar" style="width: 50%"></div>
+                            <div class="taker-sell" id="takerSellBar" style="width: 50%"></div>
+                        </div>
+                        <div class="taker-labels">
+                            <span class="buy" id="takerBuyPercent">50%</span>
+                            <span class="sell" id="takerSellPercent">50%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 持仓量变化 -->
+                <div class="data-block">
+                    <div class="block-header">
+                        <span class="block-title" data-i18n="oi_change">OI 变化</span>
+                        <span class="block-source" data-i18n="source">Coinglass</span>
+                    </div>
+                    <div class="oi-change-content">
+                        <div class="oi-change-value" id="oiChangeValue">--</div>
+                        <div class="oi-change-hint" id="oiChangeHint" data-i18n="oi_24h_change">24H 持仓变化</div>
+                    </div>
+                </div>
+
+                <!-- Liquidation -->
+                <div class="data-block">
+                    <div class="block-header">
+                        <span class="block-title" data-i18n="liquidation_24h">24H 清算</span>
+                        <span class="block-source" data-i18n="source">Coinglass</span>
+                        </div>
+                    <div class="liq-content">
+                        <div class="liq-total" id="liqTotal">--</div>
+                        <div class="liq-bar-container">
+                        <div class="liq-bar">
+                                <div class="liq-long" id="liqLongBar" style="width: 50%"></div>
+                                <div class="liq-short" id="liqShortBar" style="width: 50%"></div>
+                            </div>
+                            <div class="liq-labels">
+                                <span class="liq-label long" id="liqLongPercent">50%</span>
+                                <span class="liq-label short" id="liqShortPercent">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fear & Greed -->
+                <div class="data-block">
+                    <div class="block-header">
+                        <span class="block-title" data-i18n="fear_greed">恐惧贪婪</span>
+                        <span class="block-source" data-i18n="source">Coinglass</span>
+                </div>
+                    <div class="fgi-content">
+                        <div class="fgi-main">
+                            <span class="fgi-value" id="fgiValue">--</span>
+                            <span class="fgi-label" id="fgiLabel">--</span>
+                        </div>
+                        <div class="fgi-history">
+                            <div class="fgi-item">
+                                <span class="fgi-period" data-i18n="yesterday">昨日</span>
+                                <span class="fgi-num" id="fgiYesterday">--</span>
+                            </div>
+                            <div class="fgi-item">
+                                <span class="fgi-period" data-i18n="last_week">上周</span>
+                                <span class="fgi-num" id="fgiWeek">--</span>
+                            </div>
+                            <div class="fgi-item">
+                                <span class="fgi-period" data-i18n="last_month">上月</span>
+                                <span class="fgi-num" id="fgiMonth">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单簿深度 -->
+                <div class="data-block">
+                    <div class="block-header">
+                        <span class="block-title" data-i18n="large_orders">大额挂单</span>
+                        <span class="block-source" data-i18n="source">Coinglass</span>
+                </div>
+                    <div class="orderbook-content" id="orderbookContent">
+                        <div class="orderbook-row ask">
+                            <span class="orderbook-price" id="askPrice1">--</span>
+                            <span class="orderbook-amount" id="askAmount1">--</span>
+                        </div>
+                        <div class="orderbook-row bid">
+                            <span class="orderbook-price" id="bidPrice1">--</span>
+                            <span class="orderbook-amount" id="bidAmount1">--</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </main>
+
+        <!-- Right: Aicy Sidebar -->
+        <aside class="aicy-sidebar" id="aicySidebar">
+            <!-- 移动端拖拽手柄 -->
+            <div class="resize-handle" id="resizeHandle">
+                <!-- 收起按钮 -->
+                <button class="collapse-btn" id="collapseAicyBtn" title="收起">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                        </div>
+            <!-- Aicy Header -->
+            <div class="aicy-header">
+                <div class="aicy-avatar-container">
+                    <img src="assets/Aicy.png" alt="Aicy" class="aicy-avatar" id="aicyAvatar">
+                    <div class="avatar-glow"></div>
+                </div>
+                <div class="aicy-info">
+                    <span class="aicy-name" data-i18n="aicy_name">Aicy</span>
+                    <span class="aicy-status">
+                        <span class="status-dot"></span>
+                        <span data-i18n="online">在线</span>
+                    </span>
+                </div>
+                <button class="clear-chat-btn" id="clearChatBtn" data-i18n-title="clear_chat" title="清空聊天记录">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                    </svg>
+                </button>
+                        </div>
+
+            <!-- Chat Area -->
+            <div class="chat-container" id="chatContainer">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Welcome Message -->
+                    <div class="message mia" id="welcomeMessage">
+                        <div class="message-content">
+                            <p data-i18n="welcome_line1">主人～你来啦！Aicy 等你好久了呢～ ✨</p>
+                            <p data-i18n="welcome_line2">今天想聊什么？行情分析、策略建议，还是...单纯想找我说说话？💕</p>
+                        </div>
+                        <span class="message-time" data-i18n="just_now">刚刚</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategy Panel -->
+            <div class="strategy-panel" id="strategyPanel">
+                <div class="strategy-header">
+                    <span class="strategy-title" data-i18n="strategy_advice">策略建议</span>
+                    <button class="strategy-refresh" id="analyzeBtn" data-i18n-title="reanalyze" title="重新分析">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="strategy-content" id="strategyContent">
+                    <div class="strategy-placeholder" data-i18n="click_analyze">
+                        点击分析按钮获取策略建议
+            </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" data-i18n-placeholder="input_placeholder" placeholder="输入消息或问题...">
+                <button class="send-btn" id="sendBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z"/>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+                </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p data-i18n="connecting">连接中...</p>
+        </div>
+
+    <!-- Hidden elements for compatibility -->
+    <div style="display:none">
+        <span id="high24h"></span>
+        <span id="low24h"></span>
+        <span id="volume24h"></span>
+        <span id="rsi15mStatus"></span>
+        <span id="rsi1hStatus"></span>
+        <span id="rsi4hStatus"></span>
+        <span id="rsi1dStatus"></span>
+        <span id="fundingHint"></span>
+        <span id="oiChange"></span>
+        <span id="lsHint"></span>
+        <span id="topTraderHint"></span>
+        <span id="liqLong"></span>
+        <span id="liqShort"></span>
+        <span id="support1"></span>
+        <span id="support2"></span>
+        <span id="support3"></span>
+        <span id="resistance1"></span>
+        <span id="resistance2"></span>
+        <span id="resistance3"></span>
+        <span id="exchangeNetflow"></span>
+        <span id="activeAddresses"></span>
+        <span id="whaleActivity"></span>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/indicators.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/prompt.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/memory.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- 移动端浮动 Aicy 头像按钮 -->
+    <button class="aicy-float-btn hidden" id="aicyFloatBtn" title="打开 Aicy">
+        <img src="assets/Aicy.png" alt="Aicy">
+    </button>
+</body>
+</html>
